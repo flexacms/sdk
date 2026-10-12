@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="system" method="upgrade">
+    <name>plg_system_flexayootheme</name>
+    <author>Flexa</author>
+    <authorUrl>https://github.com/flexacms</authorUrl>
+    <creationDate>2026-10</creationDate>
+    <copyright>(C) 2026 Flexa</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>0.2.0</version>
+    <description>PLG_SYSTEM_FLEXAYOOTHEME_XML_DESCRIPTION</description>
+    <namespace path="src">FlexaCms\Plugin\System\FlexaYootheme</namespace>
+    <files>
+        <folder plugin="flexayootheme">services</folder>
+        <folder>src</folder>
+        <folder>modules</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/plg_system_flexayootheme.ini</language>
+        <language tag="en-GB">language/en-GB/plg_system_flexayootheme.sys.ini</language>
+    </languages>
+</extension>

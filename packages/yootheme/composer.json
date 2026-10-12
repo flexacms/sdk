@@ -1,0 +1,23 @@
+{
+    "name": "flexacms/yootheme",
+    "description": "YOOtheme Pro dynamic content sources for the Flexa headless CMS (WordPress and Joomla).",
+    "license": "GPL-2.0-or-later",
+    "type": "library",
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.0 || ^3.0 || ^4.0 || ^5.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FlexaCms\\YOOtheme\\": "modules/flexa-source/src/",
+            "FlexaCms\\Client\\": "../php/src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

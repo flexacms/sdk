@@ -11,7 +11,7 @@ Official SDKs for the Flexa content API, developed together in this monorepo and
 | [`@flexacms/nuxt`](packages/nuxt)           | Nuxt 3/4               | Module, composables, read-only proxy     |
 | [`@flexacms/astro`](packages/astro)         | Astro 5+               | Content collection loader                |
 | [`@flexacms/sveltekit`](packages/sveltekit) | SvelteKit              | Server hook with `event.locals.flexa`    |
-| [`flexacms/laravel`](packages/laravel)      | Laravel 11–13          | Facade, fluent queries, caching          |
+| [`flexacms/laravel`](packages/laravel)      | Laravel 12–13          | Facade, fluent queries, caching          |
 
 Every framework package re-exports `@flexacms/client`, so one install is enough.
 

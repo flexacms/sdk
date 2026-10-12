@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="content" method="upgrade">
+    <name>plg_content_flexa</name>
+    <author>Flexa</author>
+    <authorUrl>https://github.com/flexacms</authorUrl>
+    <creationDate>2026-10</creationDate>
+    <copyright>(C) 2026 Flexa</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>0.2.0</version>
+    <description>PLG_CONTENT_FLEXA_XML_DESCRIPTION</description>
+    <namespace path="src">FlexaCms\Plugin\Content\Flexa</namespace>
+    <files>
+        <folder plugin="flexa">services</folder>
+        <folder>src</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/plg_content_flexa.ini</language>
+        <language tag="en-GB">language/en-GB/plg_content_flexa.sys.ini</language>
+    </languages>
+</extension>

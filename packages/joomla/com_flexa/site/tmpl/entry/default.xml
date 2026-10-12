@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <layout title="COM_FLEXA_ENTRY_VIEW_DEFAULT_TITLE">
+        <message><![CDATA[COM_FLEXA_ENTRY_VIEW_DEFAULT_DESC]]></message>
+    </layout>
+    <fields name="request" addfieldprefix="FlexaCms\Joomla\Field">
+        <fieldset name="request">
+            <field name="entity" type="FlexaEntity" label="COM_FLEXA_FIELD_ENTITY_LABEL" required="true">
+                <option value="">COM_FLEXA_SELECT_ENTITY</option>
+            </field>
+            <field name="slug" type="text" label="COM_FLEXA_FIELD_SLUG_LABEL" required="true" filter="string" />
+        </fieldset>
+    </fields>
+    <fields name="params">
+        <fieldset name="basic" label="COM_FLEXA_FIELDSET_DISPLAY">
+            <field name="image_field" type="text" label="COM_FLEXA_FIELD_IMAGE_LABEL" description="COM_FLEXA_FIELD_KEY_DESC" filter="cmd" />
+        </fieldset>
+    </fields>
+</metadata>

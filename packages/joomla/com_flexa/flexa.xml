@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" method="upgrade">
+    <name>com_flexa</name>
+    <author>Flexa</author>
+    <authorUrl>https://github.com/flexacms</authorUrl>
+    <creationDate>2026-10</creationDate>
+    <copyright>(C) 2026 Flexa</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>0.2.0</version>
+    <description>COM_FLEXA_XML_DESCRIPTION</description>
+    <namespace path="src">FlexaCms\Component\Flexa</namespace>
+    <files folder="site">
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+    <languages folder="site">
+        <language tag="en-GB">language/en-GB/com_flexa.ini</language>
+    </languages>
+    <media destination="com_flexa" folder="media">
+        <folder>css</folder>
+        <filename>joomla.asset.json</filename>
+    </media>
+    <administration>
+        <menu img="class:file-alt">COM_FLEXA</menu>
+        <files folder="admin">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <folder>services</folder>
+            <folder>src</folder>
+            <folder>tmpl</folder>
+        </files>
+        <languages folder="admin">
+            <language tag="en-GB">language/en-GB/com_flexa.ini</language>
+            <language tag="en-GB">language/en-GB/com_flexa.sys.ini</language>
+        </languages>
+    </administration>
+</extension>

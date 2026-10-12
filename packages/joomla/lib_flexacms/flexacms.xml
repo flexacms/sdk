@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="library" method="upgrade">
+    <name>Flexa CMS library</name>
+    <libraryname>flexacms</libraryname>
+    <author>Flexa</author>
+    <authorUrl>https://github.com/flexacms</authorUrl>
+    <creationDate>2026-10</creationDate>
+    <copyright>(C) 2026 Flexa</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>0.2.0</version>
+    <description>Client for the Flexa headless CMS, shared by the Flexa component, module and plugin.</description>
+    <namespace path="src">FlexaCms\Joomla</namespace>
+    <files>
+        <folder>src</folder>
+    </files>
+</extension>

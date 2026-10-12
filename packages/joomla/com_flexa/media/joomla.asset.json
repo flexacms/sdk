@@ -1,0 +1,14 @@
+{
+    "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+    "name": "com_flexa",
+    "version": "0.2.0",
+    "description": "Flexa content styles",
+    "license": "GPL-2.0-or-later",
+    "assets": [
+        {
+            "name": "com_flexa.flexa",
+            "type": "style",
+            "uri": "com_flexa/flexa.css"
+        }
+    ]
+}

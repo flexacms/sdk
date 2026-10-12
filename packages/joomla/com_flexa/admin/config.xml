@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <fieldset name="connection" label="COM_FLEXA_FIELDSET_CONNECTION" description="COM_FLEXA_FIELDSET_CONNECTION_DESC">
+        <field name="url" type="url" label="COM_FLEXA_FIELD_URL_LABEL" hint="https://cms.example.com" filter="url" validate="url" schemes="https,http" required="true" />
+        <field name="api_key" type="password" label="COM_FLEXA_FIELD_API_KEY_LABEL" description="COM_FLEXA_FIELD_API_KEY_DESC" autocomplete="off" filter="string" required="true" />
+        <field name="cache_ttl" type="number" label="COM_FLEXA_FIELD_CACHE_TTL_LABEL" description="COM_FLEXA_FIELD_CACHE_TTL_DESC" default="300" min="0" max="86400" filter="integer" />
+    </fieldset>
+    <fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+        <field name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" filter="rules" validate="rules" component="com_flexa" section="component" />
+    </fieldset>
+</config>

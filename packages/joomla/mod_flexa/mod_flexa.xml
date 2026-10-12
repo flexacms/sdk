@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="module" client="site" method="upgrade">
+    <name>mod_flexa</name>
+    <author>Flexa</author>
+    <authorUrl>https://github.com/flexacms</authorUrl>
+    <creationDate>2026-10</creationDate>
+    <copyright>(C) 2026 Flexa</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>0.2.0</version>
+    <description>MOD_FLEXA_XML_DESCRIPTION</description>
+    <namespace path="src">FlexaCms\Module\Flexa</namespace>
+    <files>
+        <folder module="mod_flexa">services</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/mod_flexa.ini</language>
+        <language tag="en-GB">language/en-GB/mod_flexa.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params" addfieldprefix="FlexaCms\Joomla\Field">
+            <fieldset name="basic">
+                <field name="entity" type="FlexaEntity" label="MOD_FLEXA_FIELD_ENTITY_LABEL" required="true">
+                    <option value="">MOD_FLEXA_SELECT_ENTITY</option>
+                </field>
+                <field name="count" type="number" label="MOD_FLEXA_FIELD_COUNT_LABEL" default="3" min="1" max="50" filter="integer" />
+                <field name="layout_style" type="list" label="MOD_FLEXA_FIELD_LAYOUT_LABEL" default="list" validate="options">
+                    <option value="grid">MOD_FLEXA_LAYOUT_GRID</option>
+                    <option value="list">MOD_FLEXA_LAYOUT_LIST</option>
+                </field>
+                <field name="columns" type="number" label="MOD_FLEXA_FIELD_COLUMNS_LABEL" default="3" min="1" max="6" filter="integer" showon="layout_style:grid" />
+                <field name="image_field" type="text" label="MOD_FLEXA_FIELD_IMAGE_LABEL" description="MOD_FLEXA_FIELD_KEY_DESC" filter="cmd" />
+                <field name="text_field" type="text" label="MOD_FLEXA_FIELD_TEXT_LABEL" description="MOD_FLEXA_FIELD_KEY_DESC" filter="cmd" />
+                <field name="link_menu" type="menuitem" label="MOD_FLEXA_FIELD_LINK_LABEL" description="MOD_FLEXA_FIELD_LINK_DESC">
+                    <option value="">JNONE</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" class="form-select" validate="moduleLayout" />
+                <field name="moduleclass_sfx" type="textarea" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" rows="3" validate="CssIdentifier" />
+                <field name="cache" type="list" label="COM_MODULES_FIELD_CACHING_LABEL" default="1" filter="integer" validate="options">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field name="cache_time" type="number" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" default="900" filter="integer" />
+                <field name="cachemode" type="hidden" default="static">
+                    <option value="static"></option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

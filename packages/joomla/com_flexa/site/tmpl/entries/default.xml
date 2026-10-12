@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <layout title="COM_FLEXA_ENTRIES_VIEW_DEFAULT_TITLE">
+        <message><![CDATA[COM_FLEXA_ENTRIES_VIEW_DEFAULT_DESC]]></message>
+    </layout>
+    <fields name="request" addfieldprefix="FlexaCms\Joomla\Field">
+        <fieldset name="request">
+            <field name="entity" type="FlexaEntity" label="COM_FLEXA_FIELD_ENTITY_LABEL" required="true">
+                <option value="">COM_FLEXA_SELECT_ENTITY</option>
+            </field>
+        </fieldset>
+    </fields>
+    <fields name="params">
+        <fieldset name="basic" label="COM_FLEXA_FIELDSET_DISPLAY">
+            <field name="per_page" type="number" label="COM_FLEXA_FIELD_PER_PAGE_LABEL" default="12" min="1" max="100" filter="integer" />
+            <field name="layout_style" type="list" label="COM_FLEXA_FIELD_LAYOUT_LABEL" default="grid" validate="options">
+                <option value="grid">COM_FLEXA_LAYOUT_GRID</option>
+                <option value="list">COM_FLEXA_LAYOUT_LIST</option>
+            </field>
+            <field name="columns" type="number" label="COM_FLEXA_FIELD_COLUMNS_LABEL" default="3" min="1" max="6" filter="integer" showon="layout_style:grid" />
+            <field name="image_field" type="text" label="COM_FLEXA_FIELD_IMAGE_LABEL" description="COM_FLEXA_FIELD_KEY_DESC" filter="cmd" />
+            <field name="text_field" type="text" label="COM_FLEXA_FIELD_TEXT_LABEL" description="COM_FLEXA_FIELD_KEY_DESC" filter="cmd" />
+        </fieldset>
+    </fields>
+</metadata>

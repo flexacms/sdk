@@ -1,0 +1,72 @@
+/* Minimal defaults: colours and fonts come from the theme. */
+.flexa-entries--grid {
+    display: grid;
+    grid-template-columns: repeat(var(--flexa-columns, 3), minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.flexa-entries--list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.flexa-entries--list .flexa-entry-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.flexa-entry-card__media,
+.flexa-entry__media {
+    margin: 0 0 0.75rem;
+}
+
+.flexa-entry-card__media img,
+.flexa-entry__media img,
+.flexa-entry__field img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.flexa-entry-card__media img {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.flexa-entry-card__title {
+    margin: 0 0 0.5rem;
+}
+
+.flexa-entry-card__excerpt > :first-child,
+.flexa-entry__field > :first-child {
+    margin-top: 0;
+}
+
+.flexa-entry__field + .flexa-entry__field {
+    margin-top: 1rem;
+}
+
+.flexa-notice {
+    padding: 0.75rem 1rem;
+    border-left: 4px solid #d63638;
+    background: #fcf0f1;
+    color: #1d2327;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 900px) {
+    .flexa-entries--grid {
+        grid-template-columns: repeat(min(var(--flexa-columns, 3), 2), minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .flexa-entries--grid,
+    .flexa-entries--list .flexa-entry-card {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" method="upgrade">
+    <name>Flexa</name>
+    <packagename>flexa</packagename>
+    <author>Flexa</author>
+    <authorUrl>https://github.com/flexacms</authorUrl>
+    <creationDate>2026-10</creationDate>
+    <copyright>(C) 2026 Flexa</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>0.2.0</version>
+    <description>Show content from your Flexa headless CMS in Joomla: list and entry pages, a module and article tags.</description>
+    <packager>Flexa</packager>
+    <packagerurl>https://github.com/flexacms</packagerurl>
+    <blockChildUninstall>true</blockChildUninstall>
+    <scriptfile>script.php</scriptfile>
+    <files folder="packages">
+        <file type="library" id="flexacms">lib_flexacms.zip</file>
+        <file type="component" id="com_flexa">com_flexa.zip</file>
+        <file type="module" id="mod_flexa" client="site">mod_flexa.zip</file>
+        <file type="plugin" id="flexa" group="content">plg_content_flexa.zip</file>
+    </files>
+</extension>

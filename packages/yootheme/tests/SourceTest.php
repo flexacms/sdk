@@ -103,6 +103,28 @@ test('the listener registers the workspace content models', function () {
         ->and($source->queryTypes[0]['fields'])->toHaveKey('flexaPagesList');
 });
 
+test('the listener keeps the last loaded content models when Flexa becomes unreachable', function () {
+    SourceListener::$cacheDirectory = sys_get_temp_dir().'/flexa-yootheme-'.uniqid();
+    mkdir(SourceListener::$cacheDirectory);
+    $schemas = workspaceSchemas();
+    fakeFlexa([
+        '/entities' => ['data' => array_map(fn ($schema) => ['slug' => $schema['slug']], $schemas)],
+        ...array_combine(array_map(fn ($schema) => '/'.$schema['slug'].'/schema', $schemas), array_map(fn ($schema) => ['data' => $schema], $schemas)),
+    ]);
+    SourceListener::initSource(fakeSource());
+
+    fakeFlexa([]);
+    $source = fakeSource();
+    SourceListener::initSource($source);
+
+    expect($source->objectTypes)->toHaveKey('FlexaPages')
+        ->and($source->queryTypes[0]['fields'])->toHaveKey('flexaPagesList');
+
+    unlink(SourceListener::$cacheDirectory.'/flexa-schemas.json');
+    rmdir(SourceListener::$cacheDirectory);
+    SourceListener::$cacheDirectory = null;
+});
+
 test('resolvers read entries, translated values, media and repeater items', function () {
     fakeFlexa(['/pages/about' => ['data' => [
         'id' => 7,

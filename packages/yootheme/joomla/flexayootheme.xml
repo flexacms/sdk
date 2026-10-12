@@ -9,6 +9,7 @@
     <version>0.2.0</version>
     <description>PLG_SYSTEM_FLEXAYOOTHEME_XML_DESCRIPTION</description>
     <namespace path="src">FlexaCms\Plugin\System\FlexaYootheme</namespace>
+    <scriptfile>script.php</scriptfile>
     <files>
         <folder plugin="flexayootheme">services</folder>
         <folder>src</folder>

@@ -1,0 +1,37 @@
+{
+    "name": "flexacms/php",
+    "description": "Framework-agnostic PHP client for the Flexa headless CMS. Pluggable HTTP transport and cache, no dependencies.",
+    "keywords": ["flexa", "headless", "cms", "sdk", "api-client"],
+    "license": "MIT",
+    "type": "library",
+    "homepage": "https://github.com/flexacms/sdk/tree/main/packages/php",
+    "support": {
+        "issues": "https://github.com/flexacms/sdk/issues",
+        "source": "https://github.com/flexacms/php"
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.0 || ^3.0 || ^4.0 || ^5.0"
+    },
+    "suggest": {
+        "ext-curl": "Used by the default HTTP transport."
+    },
+    "autoload": {
+        "psr-4": {
+            "FlexaCms\\Client\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "pest"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

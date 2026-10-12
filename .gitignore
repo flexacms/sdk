@@ -1,5 +1,6 @@
 node_modules
 dist
 *.tsbuildinfo
-packages/laravel/vendor
-packages/laravel/composer.lock
+packages/*/vendor
+packages/*/composer.lock
+packages/*/build

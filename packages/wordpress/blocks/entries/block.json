@@ -1,0 +1,68 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "flexa/entries",
+    "title": "Flexa entries",
+    "category": "flexa",
+    "icon": "grid-view",
+    "description": "A list of entries from a Flexa content model.",
+    "keywords": [
+        "flexa",
+        "cms",
+        "headless",
+        "list"
+    ],
+    "textdomain": "flexa",
+    "attributes": {
+        "entity": {
+            "type": "string",
+            "default": ""
+        },
+        "perPage": {
+            "type": "number",
+            "default": 6
+        },
+        "layout": {
+            "type": "string",
+            "enum": [
+                "grid",
+                "list"
+            ],
+            "default": "grid"
+        },
+        "columns": {
+            "type": "number",
+            "default": 3
+        },
+        "image": {
+            "type": "string",
+            "default": ""
+        },
+        "excerpt": {
+            "type": "string",
+            "default": ""
+        },
+        "link": {
+            "type": "string",
+            "default": ""
+        },
+        "category": {
+            "type": "number",
+            "default": 0
+        }
+    },
+    "supports": {
+        "align": [
+            "wide",
+            "full"
+        ],
+        "html": false,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
+    },
+    "editorScript": "file:./index.js",
+    "render": "file:./render.php",
+    "style": "flexa"
+}

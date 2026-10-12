@@ -20,7 +20,7 @@
         "directory": "packages/cli"
     },
     "bin": {
-        "flexa": "./dist/cli.js"
+        "flexa": "dist/cli.js"
     },
     "files": [
         "dist",

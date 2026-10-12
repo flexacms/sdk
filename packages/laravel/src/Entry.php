@@ -22,6 +22,7 @@ class Entry implements Arrayable, ArrayAccess, JsonSerializable
     /**
      * @param  array<int, array{id: int, name: string, slug: string}>  $categories
      * @param  array<string, mixed>  $values
+     * @param  array<string, mixed>  $media  Absolute file URLs of image and file fields.
      * @param  array<string, array<int, array<string, mixed>>>|null  $relations
      * @param  array<string, mixed>  $attributes  The raw API payload.
      */
@@ -33,6 +34,7 @@ class Entry implements Arrayable, ArrayAccess, JsonSerializable
         public readonly string $status,
         public readonly array $categories,
         public readonly array $values,
+        public readonly array $media,
         public readonly ?array $relations,
         public readonly ?Carbon $createdAt,
         public readonly ?Carbon $updatedAt,
@@ -52,6 +54,7 @@ class Entry implements Arrayable, ArrayAccess, JsonSerializable
             status: (string) ($data['status'] ?? 'draft'),
             categories: $data['categories'] ?? [],
             values: $data['values'] ?? $data['data'] ?? [],
+            media: $data['media'] ?? [],
             relations: $data['relations'] ?? null,
             createdAt: isset($data['created_at']) ? Carbon::parse($data['created_at']) : null,
             updatedAt: isset($data['updated_at']) ? Carbon::parse($data['updated_at']) : null,
@@ -75,19 +78,42 @@ class Entry implements Arrayable, ArrayAccess, JsonSerializable
             return $value;
         }
 
+        return $this->translate($value, $locale) ?? $default;
+    }
+
+    /**
+     * Pick a translation: the locale, then the fallback locale, then any non-empty one.
+     *
+     * @param  array<string, mixed>  $translations
+     */
+    protected function translate(array $translations, ?string $locale): mixed
+    {
         foreach (array_unique([$locale ?? app()->getLocale(), app()->getFallbackLocale()]) as $candidate) {
-            if (filled($value[$candidate] ?? null)) {
-                return $value[$candidate];
+            if (filled($translations[$candidate] ?? null)) {
+                return $translations[$candidate];
             }
         }
 
-        foreach ($value as $translation) {
+        foreach ($translations as $translation) {
             if (filled($translation)) {
                 return $translation;
             }
         }
 
-        return $default;
+        return null;
+    }
+
+    /**
+     * Public URL(s) of an image or file field: a string, or a list for
+     * multiple fields. Translatable fields resolve like value().
+     *
+     * @return string|array<int, string>|null
+     */
+    public function url(string $key, ?string $locale = null): string|array|null
+    {
+        $url = $this->media[$key] ?? null;
+
+        return $this->isTranslation($url) ? $this->translate($url, $locale) : $url;
     }
 
     public function isPublished(): bool

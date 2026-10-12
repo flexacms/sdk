@@ -17,6 +17,14 @@ export type EntryValues = Record<string, unknown>;
  */
 export type ContentSchema = Record<string, EntryValues>;
 
+/** A file URL, a list of them, translations of them, or repeater items holding them. */
+export type EntryMedia =
+    | string
+    | null
+    | (string | null)[]
+    | { [locale: string]: string | string[] | null }
+    | Record<string, string | string[] | null>[];
+
 export interface Category {
     id: number;
     name: string;
@@ -40,6 +48,12 @@ export interface Entry<TValues extends object = EntryValues> {
     order: number | null;
     categories: Category[];
     values: TValues;
+    /**
+     * Absolute URLs of the files in image and file fields, keyed by field key
+     * and shaped like their values (`values` keeps the stored paths).
+     * Repeaters list their media sub-fields per item. Sent by Flexa 0.2+.
+     */
+    media?: Record<string, EntryMedia>;
     /** Present when the request includes `relations`. */
     relations?: Record<string, RelatedEntry[]>;
     created_at: string | null;

@@ -144,3 +144,21 @@ test('a missing configuration is explained', function () {
 
     expect(fn () => Flexa::entities())->toThrow(InvalidArgumentException::class, 'FLEXA_API_KEY');
 });
+
+test('entries expose the public urls of their files', function () {
+    Http::fake(['cms.test/*' => Http::response(['data' => flexaEntry(8, [
+        'media' => [
+            'cover' => 'https://media.test/cover.webp',
+            'gallery' => ['https://media.test/1.webp', 'https://media.test/2.webp'],
+            'brochure' => ['en' => 'https://media.test/en.pdf', 'es' => 'https://media.test/es.pdf'],
+        ],
+    ])])]);
+    app()->setLocale('es');
+
+    $entry = Flexa::entity('posts')->find(8);
+
+    expect($entry->url('cover'))->toBe('https://media.test/cover.webp')
+        ->and($entry->url('gallery'))->toBe(['https://media.test/1.webp', 'https://media.test/2.webp'])
+        ->and($entry->url('brochure'))->toBe('https://media.test/es.pdf')
+        ->and($entry->url('missing'))->toBeNull();
+});

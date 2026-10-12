@@ -1,0 +1,50 @@
+{
+    "name": "@flexacms/cli",
+    "version": "0.1.0",
+    "description": "Generate TypeScript types from your Flexa CMS content models.",
+    "keywords": [
+        "cms",
+        "codegen",
+        "flexa",
+        "headless",
+        "typescript"
+    ],
+    "homepage": "https://github.com/flexacms/sdk/tree/main/packages/cli#readme",
+    "bugs": {
+        "url": "https://github.com/flexacms/sdk/issues"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/flexacms/sdk.git",
+        "directory": "packages/cli"
+    },
+    "bin": {
+        "flexa": "./dist/cli.js"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsup",
+        "typecheck": "tsc -p tsconfig.json"
+    },
+    "dependencies": {
+        "@flexacms/client": "^0.1.0"
+    },
+    "engines": {
+        "node": ">=20"
+    }
+}

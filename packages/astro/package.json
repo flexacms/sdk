@@ -1,0 +1,51 @@
+{
+    "name": "@flexacms/astro",
+    "version": "0.1.0",
+    "description": "Astro content loader for the Flexa headless CMS.",
+    "keywords": [
+        "astro",
+        "astro-loader",
+        "cms",
+        "content-layer",
+        "flexa",
+        "headless"
+    ],
+    "homepage": "https://github.com/flexacms/sdk/tree/main/packages/astro#readme",
+    "bugs": {
+        "url": "https://github.com/flexacms/sdk/issues"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/flexacms/sdk.git",
+        "directory": "packages/astro"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "type": "module",
+    "sideEffects": false,
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsup",
+        "typecheck": "tsc -p tsconfig.json"
+    },
+    "dependencies": {
+        "@flexacms/client": "^0.1.0"
+    },
+    "peerDependencies": {
+        "astro": ">=5.0.0"
+    }
+}

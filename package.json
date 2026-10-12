@@ -1,0 +1,30 @@
+{
+    "name": "flexacms-sdk",
+    "private": true,
+    "description": "Monorepo of the official Flexa CMS SDKs. Each package is published on its own.",
+    "workspaces": [
+        "packages/client",
+        "packages/cli",
+        "packages/react",
+        "packages/next",
+        "packages/nuxt",
+        "packages/astro",
+        "packages/sveltekit"
+    ],
+    "type": "module",
+    "scripts": {
+        "build": "npm run build --workspaces",
+        "test": "vitest run",
+        "typecheck": "npm run typecheck --workspaces",
+        "check": "npm run build && npm run typecheck && npm test"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.0",
+        "tsup": "^8.5.1",
+        "typescript": "^5.9.3",
+        "vitest": "^5.0.3"
+    },
+    "engines": {
+        "node": ">=20"
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "name": "flexacms/laravel",
+    "description": "Laravel client for the Flexa headless CMS: fluent queries, caching and typed entries.",
+    "keywords": [
+        "flexa",
+        "headless",
+        "cms",
+        "laravel",
+        "sdk"
+    ],
+    "license": "MIT",
+    "type": "library",
+    "homepage": "https://github.com/flexacms/sdk/tree/main/packages/laravel",
+    "support": {
+        "issues": "https://github.com/flexacms/sdk/issues",
+        "source": "https://github.com/flexacms/laravel"
+    },
+    "require": {
+        "php": "^8.2",
+        "illuminate/cache": "^11.0 || ^12.0 || ^13.0",
+        "illuminate/http": "^11.0 || ^12.0 || ^13.0",
+        "illuminate/support": "^11.0 || ^12.0 || ^13.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0 || ^10.0 || ^11.0",
+        "pestphp/pest": "^3.0 || ^4.0 || ^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FlexaCms\\Laravel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FlexaCms\\Laravel\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "FlexaCms\\Laravel\\FlexaServiceProvider"
+            ],
+            "aliases": {
+                "Flexa": "FlexaCms\\Laravel\\Facades\\Flexa"
+            }
+        }
+    },
+    "scripts": {
+        "test": "pest"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

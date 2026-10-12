@@ -1,6 +1,6 @@
 {
     "name": "@flexacms/astro",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Astro content loader for the Flexa headless CMS.",
     "keywords": [
         "astro",
@@ -43,7 +43,7 @@
         "typecheck": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@flexacms/client": "^0.1.0"
+        "@flexacms/client": "^0.2.0"
     },
     "peerDependencies": {
         "astro": ">=5.0.0"

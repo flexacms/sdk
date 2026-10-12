@@ -6,12 +6,7 @@
     "category": "flexa",
     "icon": "media-document",
     "description": "One entry from a Flexa content model, or a single field of it.",
-    "keywords": [
-        "flexa",
-        "cms",
-        "headless",
-        "field"
-    ],
+    "keywords": ["flexa", "cms", "headless", "field"],
     "textdomain": "flexa",
     "attributes": {
         "entity": {
@@ -36,10 +31,7 @@
         }
     },
     "supports": {
-        "align": [
-            "wide",
-            "full"
-        ],
+        "align": ["wide", "full"],
         "html": false,
         "spacing": {
             "margin": true,

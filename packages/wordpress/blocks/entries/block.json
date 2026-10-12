@@ -6,12 +6,7 @@
     "category": "flexa",
     "icon": "grid-view",
     "description": "A list of entries from a Flexa content model.",
-    "keywords": [
-        "flexa",
-        "cms",
-        "headless",
-        "list"
-    ],
+    "keywords": ["flexa", "cms", "headless", "list"],
     "textdomain": "flexa",
     "attributes": {
         "entity": {
@@ -24,10 +19,7 @@
         },
         "layout": {
             "type": "string",
-            "enum": [
-                "grid",
-                "list"
-            ],
+            "enum": ["grid", "list"],
             "default": "grid"
         },
         "columns": {
@@ -52,10 +44,7 @@
         }
     },
     "supports": {
-        "align": [
-            "wide",
-            "full"
-        ],
+        "align": ["wide", "full"],
         "html": false,
         "spacing": {
             "margin": true,

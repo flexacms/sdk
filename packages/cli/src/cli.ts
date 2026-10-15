@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
-import { createClient, isFlexaError } from '@flexacms/client';
+import { createClient, DEFAULT_URL, isFlexaError } from '@flexacms/client';
 import { generateTypes } from './generate';
 
 const HELP = `Usage: flexa generate [options]
@@ -9,7 +9,7 @@ const HELP = `Usage: flexa generate [options]
 Generate TypeScript types for your Flexa workspace's content models.
 
 Options:
-  --url <url>      Flexa URL (default: $FLEXA_URL)
+  --url <url>      Flexa URL (default: $FLEXA_URL, then ${DEFAULT_URL})
   --key <key>      API key with the Read ability (default: $FLEXA_API_KEY)
   --out <file>     Output file (default: flexa.d.ts)
   -h, --help       Show this help
@@ -33,12 +33,12 @@ async function main(argv: string[]): Promise<number> {
         return values.help ? 0 : 1;
     }
 
-    const url = values.url ?? process.env.FLEXA_URL;
+    const url = values.url ?? process.env.FLEXA_URL ?? DEFAULT_URL;
     const apiKey = values.key ?? process.env.FLEXA_API_KEY;
 
-    if (!url || !apiKey) {
+    if (!apiKey) {
         process.stderr.write(
-            'Missing --url/--key (or the FLEXA_URL and FLEXA_API_KEY environment variables).\n',
+            'Missing --key (or the FLEXA_API_KEY environment variable).\n',
         );
 
         return 1;

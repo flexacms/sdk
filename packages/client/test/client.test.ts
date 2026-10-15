@@ -66,11 +66,19 @@ const page = (ids: number[], current: number, last: number) => ({
 });
 
 describe('createClient', () => {
-    it('requires the url and api key', () => {
-        expect(() => createClient({ url: '', apiKey: 'key' })).toThrow('"url"');
+    it('requires the api key', () => {
         expect(() =>
             createClient({ url: 'https://cms.test', apiKey: '' }),
         ).toThrow('"apiKey"');
+    });
+
+    it('defaults the url to flexacms.com', () => {
+        expect(createClient({ apiKey: 'key' }).baseUrl).toBe(
+            'https://flexacms.com/api/v1',
+        );
+        expect(createClient({ url: '', apiKey: 'key' }).baseUrl).toBe(
+            'https://flexacms.com/api/v1',
+        );
     });
 
     it('sends the api key as a bearer token to the content api', async () => {

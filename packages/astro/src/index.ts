@@ -1,4 +1,4 @@
-import { createClient } from '@flexacms/client';
+import { createClient, DEFAULT_URL } from '@flexacms/client';
 import type { Entry, FlexaClientOptions, ListParams } from '@flexacms/client';
 
 export * from '@flexacms/client';
@@ -50,7 +50,7 @@ export interface FlexaLoader {
  *         }),
  *     });
  *
- * `url` and `apiKey` fall back to the FLEXA_URL and FLEXA_API_KEY environment variables.
+ * `url` falls back to FLEXA_URL, then https://flexacms.com. `apiKey` falls back to FLEXA_API_KEY.
  */
 export function flexaLoader(options: FlexaLoaderOptions): FlexaLoader {
     const {
@@ -63,12 +63,12 @@ export function flexaLoader(options: FlexaLoaderOptions): FlexaLoader {
     return {
         name: 'flexa-loader',
         async load({ store, logger, parseData, generateDigest }) {
-            const url = clientOptions.url ?? process.env.FLEXA_URL;
+            const url = clientOptions.url || process.env.FLEXA_URL || DEFAULT_URL;
             const apiKey = clientOptions.apiKey ?? process.env.FLEXA_API_KEY;
 
-            if (!url || !apiKey) {
+            if (!apiKey) {
                 throw new Error(
-                    `Flexa loader "${entity}": set FLEXA_URL and FLEXA_API_KEY, or pass "url" and "apiKey".`,
+                    `Flexa loader "${entity}": set FLEXA_API_KEY, or pass "apiKey".`,
                 );
             }
 

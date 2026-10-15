@@ -1,6 +1,6 @@
 {
     "name": "@flexacms/nuxt",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Nuxt module for the Flexa headless CMS: auto-imported composables and a read-only server proxy that keeps your API key private.",
     "keywords": [
         "cms",
@@ -42,7 +42,7 @@
         "typecheck": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@flexacms/client": "^0.2.0",
+        "@flexacms/client": "^0.3.0",
         "@nuxt/kit": "^3.12.0 || ^4.0.0",
         "defu": "^6.1.4"
     },

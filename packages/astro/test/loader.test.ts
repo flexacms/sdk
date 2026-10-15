@@ -102,11 +102,11 @@ describe('flexaLoader', () => {
         expect([...items.keys()]).toEqual(['faq-3']);
     });
 
-    it('explains missing configuration', async () => {
-        vi.stubEnv('FLEXA_URL', '');
+    it('explains missing api key', async () => {
+        vi.stubEnv('FLEXA_API_KEY', '');
         await expect(
             flexaLoader({ entity: 'posts' }).load(context().ctx),
-        ).rejects.toThrow('FLEXA_URL and FLEXA_API_KEY');
+        ).rejects.toThrow('FLEXA_API_KEY');
         vi.unstubAllEnvs();
     });
 });

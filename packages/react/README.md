@@ -10,8 +10,8 @@ npm install @flexacms/react
 import { createClient, FlexaProvider, useEntries } from '@flexacms/react';
 
 const flexa = createClient({
-    url: import.meta.env.VITE_FLEXA_URL,
     apiKey: import.meta.env.VITE_FLEXA_API_KEY,
+    // url: import.meta.env.VITE_FLEXA_URL, // optional, defaults to https://flexacms.com
 });
 
 export function App() {

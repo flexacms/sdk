@@ -10,8 +10,8 @@ npm install @flexacms/client
 import { createClient, localize } from '@flexacms/client';
 
 const flexa = createClient({
-    url: process.env.FLEXA_URL!, // https://cms.example.com
     apiKey: process.env.FLEXA_API_KEY!,
+    // url: 'https://staging.example.com', // optional, defaults to https://flexacms.com
 });
 
 const { data: posts, meta } = await flexa

@@ -1,4 +1,4 @@
-import { createClient } from '@flexacms/client';
+import { createClient, DEFAULT_URL } from '@flexacms/client';
 import type {
     ContentSchema,
     FlexaClient,
@@ -60,19 +60,20 @@ export function flexaTags(path: string): string[] {
  *
  * Reads go through Next's data cache, tagged per entity and entry so they can
  * be refreshed with `revalidateFlexa()`; writes are never cached. The URL and
- * API key default to the `FLEXA_URL` and `FLEXA_API_KEY` environment variables.
+ * URL defaults to `FLEXA_URL` or `https://flexacms.com`; the API key defaults to
+ * the `FLEXA_API_KEY` environment variable.
  * Only use it on the server: the API key must not reach the browser.
  */
 export function createFlexaClient<TSchema extends object = ContentSchema>(
     options: FlexaNextOptions = {},
 ): FlexaClient<TSchema> {
     const { revalidate = 60, ...clientOptions } = options;
-    const url = clientOptions.url ?? process.env.FLEXA_URL;
+    const url = clientOptions.url || process.env.FLEXA_URL || DEFAULT_URL;
     const apiKey = clientOptions.apiKey ?? process.env.FLEXA_API_KEY;
 
-    if (!url || !apiKey) {
+    if (!apiKey) {
         throw new Error(
-            'Flexa: set the FLEXA_URL and FLEXA_API_KEY environment variables, or pass "url" and "apiKey".',
+            'Flexa: set the FLEXA_API_KEY environment variable, or pass "apiKey".',
         );
     }
 

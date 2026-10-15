@@ -6,12 +6,13 @@ import {
     defineNuxtModule,
 } from '@nuxt/kit';
 import { defu } from 'defu';
+import { DEFAULT_URL } from '@flexacms/client';
 
 export type { FlexaRegister } from './types';
 export * from '@flexacms/client';
 
 export interface ModuleOptions {
-    /** Flexa URL. Prefer the NUXT_FLEXA_URL environment variable. */
+    /** Flexa URL. Defaults to https://flexacms.com. Prefer the NUXT_FLEXA_URL environment variable. */
     url?: string;
     /** API key, kept server-side. Prefer the NUXT_FLEXA_API_KEY environment variable. */
     apiKey?: string;
@@ -42,7 +43,7 @@ export default defineNuxtModule<ModuleOptions>({
                 | Record<string, unknown>
                 | undefined,
             {
-                url: options.url ?? '',
+                url: options.url || DEFAULT_URL,
                 apiKey: options.apiKey ?? '',
                 apiPath: options.apiPath ?? '/api/v1',
             },

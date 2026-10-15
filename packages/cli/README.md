@@ -3,7 +3,7 @@
 Generate TypeScript types from the content models of your [Flexa](https://github.com/flexacms) workspace.
 
 ```bash
-FLEXA_URL=https://cms.example.com FLEXA_API_KEY=flx_... npx @flexacms/cli generate --out src/flexa.d.ts
+FLEXA_API_KEY=flx_... npx @flexacms/cli generate --out src/flexa.d.ts
 ```
 
 The file contains one `<Entity>Values` interface per content model and a `FlexaSchema` map. Pass it to any Flexa SDK:
@@ -18,6 +18,6 @@ Field types map to their API values: translatable fields become `Localized<T>`, 
 
 | Option  | Default                         |
 | ------- | ------------------------------- |
-| `--url` | `$FLEXA_URL`                    |
+| `--url` | `$FLEXA_URL`, then `https://flexacms.com` |
 | `--key` | `$FLEXA_API_KEY` (Read ability) |
 | `--out` | `flexa.d.ts`                    |

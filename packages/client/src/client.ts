@@ -12,9 +12,11 @@ import type {
     RequestOptions,
 } from './types';
 
+export const DEFAULT_URL = 'https://flexacms.com';
+
 export interface FlexaClientOptions {
-    /** Base URL of your Flexa installation, e.g. `https://cms.example.com`. */
-    url: string;
+    /** Base URL of your Flexa installation. Defaults to `https://flexacms.com`. */
+    url?: string;
     /**
      * Workspace API key. Keep it on the server: anyone with the key can do what
      * its abilities allow. Use a Read-only key for public websites.
@@ -65,17 +67,14 @@ export class FlexaClient<TSchema extends object = ContentSchema> {
         FlexaClientOptions;
 
     constructor(options: FlexaClientOptions) {
-        if (!options.url) {
-            throw new TypeError('Flexa: the "url" option is required.');
-        }
-
         if (!options.apiKey) {
             throw new TypeError('Flexa: the "apiKey" option is required.');
         }
 
+        const url = options.url || DEFAULT_URL;
         const apiPath = `/${(options.apiPath ?? '/api/v1').replace(/^\/+|\/+$/g, '')}`;
 
-        this.baseUrl = `${options.url.replace(/\/+$/, '')}${apiPath}`;
+        this.baseUrl = `${url.replace(/\/+$/, '')}${apiPath}`;
         this.options = { timeout: 30_000, retries: 2, ...options };
     }
 

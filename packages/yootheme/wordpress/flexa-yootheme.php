@@ -3,7 +3,7 @@
  * Plugin Name:       Flexa for YOOtheme Pro
  * Plugin URI:        https://github.com/flexacms/sdk/tree/main/packages/yootheme
  * Description:       Use Flexa content models as dynamic content sources in the YOOtheme Pro page builder.
- * Version:           0.2.0
+ * Version:           0.3.0
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Requires Plugins:  flexa

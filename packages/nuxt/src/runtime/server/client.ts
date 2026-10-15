@@ -20,9 +20,9 @@ export function useFlexaClient(): FlexaClient<RegisteredSchema> {
         apiPath: string;
     };
 
-    if (!config.url || !config.apiKey) {
+    if (!config.apiKey) {
         throw new Error(
-            'Flexa: set NUXT_FLEXA_URL and NUXT_FLEXA_API_KEY (or flexa.url / flexa.apiKey in nuxt.config).',
+            'Flexa: set NUXT_FLEXA_API_KEY (or flexa.apiKey in nuxt.config).',
         );
     }
 

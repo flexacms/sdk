@@ -9,8 +9,8 @@ composer require flexacms/laravel
 ```
 
 ```env
-FLEXA_URL=https://cms.example.com
 FLEXA_API_KEY=flx_...
+# FLEXA_URL=https://staging.example.com # optional, defaults to https://flexacms.com
 ```
 
 ```php

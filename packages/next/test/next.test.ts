@@ -94,11 +94,25 @@ describe('createFlexaClient', () => {
         vi.unstubAllEnvs();
     });
 
-    it('explains missing configuration', () => {
+    it('defaults the url to flexacms.com', async () => {
         vi.stubEnv('FLEXA_URL', '');
-        expect(() => createFlexaClient()).toThrow(
-            'FLEXA_URL and FLEXA_API_KEY',
+        vi.stubEnv('FLEXA_API_KEY', 'env-key');
+        const fetch = vi.fn(
+            async (_input: string | URL | Request, _init?: RequestInit) =>
+                json({ data: [] }),
         );
+
+        await createFlexaClient({ fetch }).entities();
+
+        expect(fetch.mock.calls[0]?.[0] as string).toBe(
+            'https://flexacms.com/api/v1/entities',
+        );
+        vi.unstubAllEnvs();
+    });
+
+    it('explains missing api key', () => {
+        vi.stubEnv('FLEXA_API_KEY', '');
+        expect(() => createFlexaClient()).toThrow('FLEXA_API_KEY');
         vi.unstubAllEnvs();
     });
 });

@@ -162,3 +162,11 @@ test('entries expose the public urls of their files', function () {
         ->and($entry->url('brochure'))->toBe('https://media.test/es.pdf')
         ->and($entry->url('missing'))->toBeNull();
 });
+
+test('the url defaults to flexacms.com when FLEXA_URL is not set', function () {
+    putenv('FLEXA_URL');
+
+    $config = require __DIR__.'/../../config/flexa.php';
+
+    expect($config['url'])->toBe('https://flexacms.com');
+});

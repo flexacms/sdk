@@ -6,7 +6,7 @@
     <creationDate>2026-10</creationDate>
     <copyright>(C) 2026 Flexa</copyright>
     <license>GNU General Public License version 2 or later</license>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <description>COM_FLEXA_XML_DESCRIPTION</description>
     <namespace path="src">FlexaCms\Component\Flexa</namespace>
     <files folder="site">

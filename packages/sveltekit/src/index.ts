@@ -1,4 +1,4 @@
-import { createClient } from '@flexacms/client';
+import { createClient, DEFAULT_URL } from '@flexacms/client';
 import type {
     ContentSchema,
     FlexaClient,
@@ -25,17 +25,17 @@ interface HandleInput<TEvent extends { locals: object; fetch: typeof fetch }> {
  *     export const handle = createFlexaHandle({ url: env.FLEXA_URL, apiKey: env.FLEXA_API_KEY });
  *
  * Combine it with other hooks using `sequence()` from `@sveltejs/kit/hooks`.
- * `url` and `apiKey` fall back to the FLEXA_URL and FLEXA_API_KEY environment variables.
+ * `url` falls back to FLEXA_URL, then https://flexacms.com. `apiKey` falls back to FLEXA_API_KEY.
  */
 export function createFlexaHandle<TSchema extends object = ContentSchema>(
     options: Partial<FlexaClientOptions> = {},
 ) {
-    const url = options.url ?? process.env.FLEXA_URL;
+    const url = options.url || process.env.FLEXA_URL || DEFAULT_URL;
     const apiKey = options.apiKey ?? process.env.FLEXA_API_KEY;
 
-    if (!url || !apiKey) {
+    if (!apiKey) {
         throw new Error(
-            'Flexa: pass "url" and "apiKey" (e.g. from $env/dynamic/private) or set FLEXA_URL and FLEXA_API_KEY.',
+            'Flexa: pass "apiKey" (e.g. from $env/dynamic/private) or set FLEXA_API_KEY.',
         );
     }
 

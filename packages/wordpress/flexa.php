@@ -6,7 +6,7 @@ use FlexaCms\WordPress\Plugin;
  * Plugin Name:       Flexa
  * Plugin URI:        https://github.com/flexacms/sdk/tree/main/packages/wordpress
  * Description:       Show content from your Flexa headless CMS in WordPress: blocks, shortcodes and template functions, cached and translated.
- * Version:           0.2.0
+ * Version:           0.3.0
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            Flexa
@@ -19,7 +19,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-define('FLEXA_VERSION', '0.2.0');
+define('FLEXA_VERSION', '0.3.0');
 define('FLEXA_FILE', __FILE__);
 define('FLEXA_DIR', plugin_dir_path(__FILE__));
 define('FLEXA_URL_PATH', plugin_dir_url(__FILE__));

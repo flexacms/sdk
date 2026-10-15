@@ -28,9 +28,9 @@ describe('createFlexaHandle', () => {
         );
     });
 
-    it('requires the url and api key', () => {
-        vi.stubEnv('FLEXA_URL', '');
-        expect(() => createFlexaHandle()).toThrow('url');
+    it('requires the api key', () => {
+        vi.stubEnv('FLEXA_API_KEY', '');
+        expect(() => createFlexaHandle()).toThrow('apiKey');
         vi.unstubAllEnvs();
     });
 });

@@ -1,6 +1,6 @@
 {
     "name": "@flexacms/cli",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Generate TypeScript types from your Flexa CMS content models.",
     "keywords": [
         "cms",
@@ -42,7 +42,7 @@
         "typecheck": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@flexacms/client": "^0.2.0"
+        "@flexacms/client": "^0.3.0"
     },
     "engines": {
         "node": ">=20"

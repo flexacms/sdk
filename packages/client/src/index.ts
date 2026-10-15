@@ -1,4 +1,4 @@
-export { createClient, EntityClient, FlexaClient } from './client';
+export { createClient, DEFAULT_URL, EntityClient, FlexaClient } from './client';
 export type { FlexaClientOptions } from './client';
 export { FlexaError, isFlexaError } from './errors';
 export { isLocalized, localize } from './localize';

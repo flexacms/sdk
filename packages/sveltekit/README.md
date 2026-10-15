@@ -12,6 +12,7 @@ import { env } from '$env/dynamic/private';
 import { createFlexaHandle } from '@flexacms/sveltekit';
 
 export const handle = createFlexaHandle({
+    // url defaults to FLEXA_URL, then https://flexacms.com
     url: env.FLEXA_URL,
     apiKey: env.FLEXA_API_KEY,
 });

@@ -7,12 +7,13 @@ return [
     | Connection
     |--------------------------------------------------------------------------
     |
-    | Your Flexa URL and a workspace API key. Use a key with only the Read
-    | ability unless your site also writes content.
+    | Your Flexa URL and a workspace API key. The URL defaults to the hosted
+    | Flexa at flexacms.com; set FLEXA_URL only for staging or local instances.
+    | Use a key with only the Read ability unless your site also writes content.
     |
     */
 
-    'url' => env('FLEXA_URL'),
+    'url' => env('FLEXA_URL') ?: 'https://flexacms.com',
 
     'api_key' => env('FLEXA_API_KEY'),
 

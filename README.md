@@ -19,6 +19,18 @@ Official SDKs for the Flexa content API, developed together in this monorepo and
 
 Every JavaScript framework package re-exports `@flexacms/client`, so one install is enough. The CMS plugins bundle `flexacms/php` under their own namespace (`scripts/sync-php-core.php`) so they never conflict with each other.
 
+## Agent skill
+
+`skills/flexa-sdk` teaches coding agents (Claude Code and others) which SDK to use for your stack, how to configure it and the mistakes to avoid. Install it into your project:
+
+```bash
+npx skills add flexacms/sdk --skill flexa-sdk              # project scope
+npx skills add flexacms/sdk --skill flexa-sdk -a claude-code # only Claude Code
+npx skills add flexacms/sdk --skill flexa-sdk -g            # every project on this machine
+```
+
+The skill runs with your agent's permissions, so read it before installing. It is versioned with the SDK.
+
 ## Development
 
 ```bash

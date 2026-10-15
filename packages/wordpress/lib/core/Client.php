@@ -22,7 +22,7 @@ use InvalidArgumentException;
  */
 class Client
 {
-    public const VERSION = '0.3.0';
+    public const VERSION = '0.3.1';
 
     private const RETRYABLE_STATUSES = [429, 502, 503, 504];
 

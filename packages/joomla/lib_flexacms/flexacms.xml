@@ -7,7 +7,7 @@
     <creationDate>2026-10</creationDate>
     <copyright>(C) 2026 Flexa</copyright>
     <license>GNU General Public License version 2 or later</license>
-    <version>0.3.0</version>
+    <version>0.3.1</version>
     <description>Client for the Flexa headless CMS, shared by the Flexa component, module and plugin.</description>
     <namespace path="src">FlexaCms\Joomla</namespace>
     <files>

@@ -16,7 +16,7 @@ use Joomla\CMS\Factory;
  */
 final class Flexa
 {
-    public const VERSION = '0.3.0';
+    public const VERSION = '0.3.1';
 
     private static ?Client $client = null;
 

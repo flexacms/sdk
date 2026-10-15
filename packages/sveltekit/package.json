@@ -1,6 +1,6 @@
 {
     "name": "@flexacms/sveltekit",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "SvelteKit integration for the Flexa headless CMS: a server hook that puts a Flexa client on event.locals.",
     "keywords": [
         "cms",
@@ -42,7 +42,7 @@
         "typecheck": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@flexacms/client": "^0.3.0"
+        "@flexacms/client": "^0.3.1"
     },
     "peerDependencies": {
         "@sveltejs/kit": ">=2.0.0"

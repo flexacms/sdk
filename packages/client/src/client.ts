@@ -12,10 +12,10 @@ import type {
     RequestOptions,
 } from './types';
 
-export const DEFAULT_URL = 'https://flexacms.com';
+export const DEFAULT_URL = 'https://app.flexacms.com';
 
 export interface FlexaClientOptions {
-    /** Base URL of your Flexa installation. Defaults to `https://flexacms.com`. */
+    /** Base URL of your Flexa installation. Defaults to `https://app.flexacms.com`. */
     url?: string;
     /**
      * Workspace API key. Keep it on the server: anyone with the key can do what

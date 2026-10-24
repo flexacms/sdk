@@ -60,7 +60,7 @@ export function flexaTags(path: string): string[] {
  *
  * Reads go through Next's data cache, tagged per entity and entry so they can
  * be refreshed with `revalidateFlexa()`; writes are never cached. The URL and
- * URL defaults to `FLEXA_URL` or `https://flexacms.com`; the API key defaults to
+ * URL defaults to `FLEXA_URL` or `https://app.flexacms.com`; the API key defaults to
  * the `FLEXA_API_KEY` environment variable.
  * Only use it on the server: the API key must not reach the browser.
  */

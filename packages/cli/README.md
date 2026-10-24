@@ -18,6 +18,6 @@ Field types map to their API values: translatable fields become `Localized<T>`, 
 
 | Option  | Default                         |
 | ------- | ------------------------------- |
-| `--url` | `$FLEXA_URL`, then `https://flexacms.com` |
+| `--url` | `$FLEXA_URL`, then `https://app.flexacms.com` |
 | `--key` | `$FLEXA_API_KEY` (Read ability) |
 | `--out` | `flexa.d.ts`                    |

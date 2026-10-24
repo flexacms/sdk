@@ -50,7 +50,7 @@ export interface FlexaLoader {
  *         }),
  *     });
  *
- * `url` falls back to FLEXA_URL, then https://flexacms.com. `apiKey` falls back to FLEXA_API_KEY.
+ * `url` falls back to FLEXA_URL, then https://app.flexacms.com. `apiKey` falls back to FLEXA_API_KEY.
  */
 export function flexaLoader(options: FlexaLoaderOptions): FlexaLoader {
     const {

@@ -15,7 +15,7 @@ const posts = defineCollection({
     loader: flexaLoader({
         entity: 'posts',
         apiKey: import.meta.env.FLEXA_API_KEY,
-        // url: import.meta.env.FLEXA_URL, // optional, defaults to https://flexacms.com
+        // url: import.meta.env.FLEXA_URL, // optional, defaults to https://app.flexacms.com
     }),
 });
 
@@ -38,7 +38,7 @@ Each entry is stored with its slug as id (or its numeric id when it has no slug)
 | `entity`         | —                             | Entity slug                                                   |
 | `query`          | `{ status: 'published' }`     | `status`, `search`, `category`, `perPage`, `includeRelations` |
 | `id`             | slug, then id                 | `(entry) => string`                                           |
-| `url`            | `FLEXA_URL`, then `https://flexacms.com` |                                                    |
+| `url`            | `FLEXA_URL`, then `https://app.flexacms.com` |                                                    |
 | `apiKey`         | `FLEXA_API_KEY`               |                                                               |
 
 Add a `schema` to `defineCollection` to validate or reshape `data` with Zod.

@@ -94,7 +94,7 @@ describe('createFlexaClient', () => {
         vi.unstubAllEnvs();
     });
 
-    it('defaults the url to flexacms.com', async () => {
+    it('defaults the url to app.flexacms.com', async () => {
         vi.stubEnv('FLEXA_URL', '');
         vi.stubEnv('FLEXA_API_KEY', 'env-key');
         const fetch = vi.fn(
@@ -105,7 +105,7 @@ describe('createFlexaClient', () => {
         await createFlexaClient({ fetch }).entities();
 
         expect(fetch.mock.calls[0]?.[0] as string).toBe(
-            'https://flexacms.com/api/v1/entities',
+            'https://app.flexacms.com/api/v1/entities',
         );
         vi.unstubAllEnvs();
     });

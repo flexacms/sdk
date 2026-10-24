@@ -12,7 +12,7 @@ export type { FlexaRegister } from './types';
 export * from '@flexacms/client';
 
 export interface ModuleOptions {
-    /** Flexa URL. Defaults to https://flexacms.com. Prefer the NUXT_FLEXA_URL environment variable. */
+    /** Flexa URL. Defaults to https://app.flexacms.com. Prefer the NUXT_FLEXA_URL environment variable. */
     url?: string;
     /** API key, kept server-side. Prefer the NUXT_FLEXA_API_KEY environment variable. */
     apiKey?: string;

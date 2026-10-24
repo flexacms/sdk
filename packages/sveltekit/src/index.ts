@@ -25,7 +25,7 @@ interface HandleInput<TEvent extends { locals: object; fetch: typeof fetch }> {
  *     export const handle = createFlexaHandle({ url: env.FLEXA_URL, apiKey: env.FLEXA_API_KEY });
  *
  * Combine it with other hooks using `sequence()` from `@sveltejs/kit/hooks`.
- * `url` falls back to FLEXA_URL, then https://flexacms.com. `apiKey` falls back to FLEXA_API_KEY.
+ * `url` falls back to FLEXA_URL, then https://app.flexacms.com. `apiKey` falls back to FLEXA_API_KEY.
  */
 export function createFlexaHandle<TSchema extends object = ContentSchema>(
     options: Partial<FlexaClientOptions> = {},

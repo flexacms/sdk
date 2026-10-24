@@ -8,12 +8,12 @@ return [
     |--------------------------------------------------------------------------
     |
     | Your Flexa URL and a workspace API key. The URL defaults to the hosted
-    | Flexa at flexacms.com; set FLEXA_URL only for staging or local instances.
+    | Flexa at app.flexacms.com; set FLEXA_URL only for staging or local instances.
     | Use a key with only the Read ability unless your site also writes content.
     |
     */
 
-    'url' => env('FLEXA_URL') ?: 'https://flexacms.com',
+    'url' => env('FLEXA_URL') ?: 'https://app.flexacms.com',
 
     'api_key' => env('FLEXA_API_KEY'),
 

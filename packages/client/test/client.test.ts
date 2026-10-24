@@ -72,12 +72,12 @@ describe('createClient', () => {
         ).toThrow('"apiKey"');
     });
 
-    it('defaults the url to flexacms.com', () => {
+    it('defaults the url to app.flexacms.com', () => {
         expect(createClient({ apiKey: 'key' }).baseUrl).toBe(
-            'https://flexacms.com/api/v1',
+            'https://app.flexacms.com/api/v1',
         );
         expect(createClient({ url: '', apiKey: 'key' }).baseUrl).toBe(
-            'https://flexacms.com/api/v1',
+            'https://app.flexacms.com/api/v1',
         );
     });
 

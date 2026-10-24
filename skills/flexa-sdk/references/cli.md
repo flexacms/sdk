@@ -8,7 +8,7 @@ FLEXA_API_KEY=flx_... npx @flexacms/cli generate --out src/flexa.d.ts
 
 | Option | Default |
 | --- | --- |
-| `--url` | `$FLEXA_URL`, then `https://flexacms.com` |
+| `--url` | `$FLEXA_URL`, then `https://app.flexacms.com` |
 | `--key` | `$FLEXA_API_KEY` (needs the Read ability) |
 | `--out` | `flexa.d.ts` |
 

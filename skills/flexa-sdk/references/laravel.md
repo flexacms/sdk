@@ -9,7 +9,7 @@ php artisan vendor:publish --tag=flexa-config   # optional
 
 ```env
 FLEXA_API_KEY=flx_...
-# FLEXA_URL=https://staging.example.com        # optional, defaults to https://flexacms.com
+# FLEXA_URL=https://staging.example.com        # optional, defaults to https://app.flexacms.com
 # FLEXA_CACHE_TTL=60                            # seconds, 0 disables
 # FLEXA_CACHE_STORE=redis                       # default cache store if unset
 ```

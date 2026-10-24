@@ -7,7 +7,7 @@ import { createClient, localize } from '@flexacms/client';
 
 const flexa = createClient({
     apiKey: process.env.FLEXA_API_KEY!,
-    // url: 'https://staging.example.com', // optional, defaults to https://flexacms.com
+    // url: 'https://staging.example.com', // optional, defaults to https://app.flexacms.com
 });
 
 const { data: posts, meta } = await flexa

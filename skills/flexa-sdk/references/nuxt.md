@@ -15,7 +15,7 @@ export default defineNuxtConfig({
 
 ```env
 NUXT_FLEXA_API_KEY=flx_...
-# NUXT_FLEXA_URL=https://staging.example.com   # optional, defaults to https://flexacms.com
+# NUXT_FLEXA_URL=https://staging.example.com   # optional, defaults to https://app.flexacms.com
 ```
 
 ```vue

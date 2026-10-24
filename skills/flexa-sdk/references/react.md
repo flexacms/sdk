@@ -11,7 +11,7 @@ import { createClient, FlexaProvider, useEntries } from '@flexacms/react';
 
 const flexa = createClient({
     apiKey: import.meta.env.VITE_FLEXA_API_KEY,
-    // url: import.meta.env.VITE_FLEXA_URL, // optional, defaults to https://flexacms.com
+    // url: import.meta.env.VITE_FLEXA_URL, // optional, defaults to https://app.flexacms.com
 });
 
 export function App() {

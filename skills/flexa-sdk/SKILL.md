@@ -27,7 +27,7 @@ Framework packages re-export `@flexacms/client`, so installing one framework pac
 
 | Variable | Purpose | Default |
 | --- | --- | --- |
-| `FLEXA_URL` | Base URL of the CMS | `https://flexacms.com` |
+| `FLEXA_URL` | Base URL of the CMS | `https://app.flexacms.com` |
 | `FLEXA_API_KEY` | API key (`flx_...`) | none, required |
 
 Framework prefixes apply: Nuxt uses `NUXT_FLEXA_*`, Vite-based apps expose variables through `VITE_*` (for example `VITE_FLEXA_API_KEY`), and Astro/SvelteKit read them through `import.meta.env` or `$env/dynamic/private`. Check each reference for the exact name.

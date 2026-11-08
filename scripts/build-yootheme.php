@@ -7,7 +7,6 @@
  *     packages/yootheme/build/flexa-yootheme.zip              (WordPress plugin)
  *     packages/yootheme/build/plg_system_flexayootheme.zip    (Joomla plugin)
  */
-
 $root = dirname(__DIR__).'/packages/yootheme';
 $build = $root.'/build';
 @mkdir($build, 0777, true);

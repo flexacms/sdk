@@ -7,7 +7,6 @@
  *
  * README.md is for the repository; WordPress uses readme.txt.
  */
-
 $source = dirname(__DIR__).'/packages/wordpress';
 $build = $source.'/build';
 $skip = ['README.md', 'build'];

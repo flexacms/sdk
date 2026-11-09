@@ -3,12 +3,7 @@
  * browser may reach through it. Writes, trashed entries, unpublished entries and
  * unknown parameters never pass, whatever abilities the API key has.
  */
-const ALLOWED_QUERY = [
-    'search',
-    'category',
-    'page',
-    'per_page',
-] as const;
+const ALLOWED_QUERY = ['search', 'category', 'page', 'per_page'] as const;
 
 export function proxyRequestPath(
     path: string,

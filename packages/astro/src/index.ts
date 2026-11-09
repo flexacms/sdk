@@ -63,7 +63,8 @@ export function flexaLoader(options: FlexaLoaderOptions): FlexaLoader {
     return {
         name: 'flexa-loader',
         async load({ store, logger, parseData, generateDigest }) {
-            const url = clientOptions.url || process.env.FLEXA_URL || DEFAULT_URL;
+            const url =
+                clientOptions.url || process.env.FLEXA_URL || DEFAULT_URL;
             const apiKey = clientOptions.apiKey ?? process.env.FLEXA_API_KEY;
 
             if (!apiKey) {

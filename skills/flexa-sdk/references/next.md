@@ -47,9 +47,9 @@ Reads are tagged `flexa`, `flexa:<entity>` and `flexa:<entity>:<id or slug>`. Wr
 ```ts
 import { revalidateFlexa } from '@flexacms/next';
 
-revalidateFlexa();                   // everything
-revalidateFlexa('posts');            // one entity
-revalidateFlexa('posts', 'hello');   // one entry
+revalidateFlexa(); // everything
+revalidateFlexa('posts'); // one entity
+revalidateFlexa('posts', 'hello'); // one entry
 ```
 
 Expose a webhook route:

@@ -34,12 +34,12 @@ Failures throw `FlexaCms\Client\Exceptions\FlexaException` with `status` and val
 
 ## Options
 
-| Option | Default | Notes |
-| --- | --- | --- |
-| `api_path` | `/api/v1` | |
-| `timeout` | `30` | Seconds |
-| `retries` | `2` | Reads only |
-| `cache_ttl` | `60` | Seconds |
-| `cache` | in-memory | Implement `FlexaCms\Client\Cache\Cache` |
-| `transport` | cURL | Implement `FlexaCms\Client\Http\Transport` |
-| `locale`, `fallback_locales` | none | Used by `Entry::value()` and `Entry::url()` |
+| Option                       | Default   | Notes                                       |
+| ---------------------------- | --------- | ------------------------------------------- |
+| `api_path`                   | `/api/v1` |                                             |
+| `timeout`                    | `30`      | Seconds                                     |
+| `retries`                    | `2`       | Reads only                                  |
+| `cache_ttl`                  | `60`      | Seconds                                     |
+| `cache`                      | in-memory | Implement `FlexaCms\Client\Cache\Cache`     |
+| `transport`                  | cURL      | Implement `FlexaCms\Client\Http\Transport`  |
+| `locale`, `fallback_locales` | none      | Used by `Entry::value()` and `Entry::url()` |

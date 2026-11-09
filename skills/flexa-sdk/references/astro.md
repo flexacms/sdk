@@ -35,12 +35,12 @@ Each entry is stored with its slug as `id` (or its numeric id when it has no slu
 
 ## Options
 
-| Option | Default | Notes |
-| --- | --- | --- |
-| `entity` | none | Entity slug, required |
-| `query` | `{ status: 'published' }` | `status`, `search`, `category`, `perPage`, `includeRelations` |
-| `id` | slug, then id | `(entry) => string` |
-| `url` | `FLEXA_URL`, then `https://app.flexacms.com` | |
-| `apiKey` | `FLEXA_API_KEY` | |
+| Option   | Default                                      | Notes                                                         |
+| -------- | -------------------------------------------- | ------------------------------------------------------------- |
+| `entity` | none                                         | Entity slug, required                                         |
+| `query`  | `{ status: 'published' }`                    | `status`, `search`, `category`, `perPage`, `includeRelations` |
+| `id`     | slug, then id                                | `(entry) => string`                                           |
+| `url`    | `FLEXA_URL`, then `https://app.flexacms.com` |                                                               |
+| `apiKey` | `FLEXA_API_KEY`                              |                                                               |
 
 Add a `schema` to `defineCollection` (for example with Zod) to validate or reshape `data`.

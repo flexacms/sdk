@@ -9,26 +9,26 @@ Flexa is a headless CMS. Content lives in **entities** (content models such as `
 
 ## Pick the package
 
-| Stack | Install | Reference |
-| --- | --- | --- |
-| Laravel 12–13 | `composer require flexacms/laravel` | [references/laravel.md](references/laravel.md) |
-| Other PHP 8.1+ | `composer require flexacms/php` | [references/php.md](references/php.md) |
-| Next.js App Router | `npm install @flexacms/next` | [references/next.md](references/next.md) |
-| React (SPA, Vite) | `npm install @flexacms/react` | [references/react.md](references/react.md) |
-| Nuxt 3/4 | `npm install @flexacms/nuxt` | [references/nuxt.md](references/nuxt.md) |
-| Astro 5+ | `npm install @flexacms/astro` | [references/astro.md](references/astro.md) |
-| SvelteKit | `npm install @flexacms/sveltekit` | [references/sveltekit.md](references/sveltekit.md) |
-| Any JS runtime | `npm install @flexacms/client` | [references/client.md](references/client.md) |
-| Typed content (TS) | `npx @flexacms/cli generate` | [references/cli.md](references/cli.md) |
+| Stack              | Install                             | Reference                                          |
+| ------------------ | ----------------------------------- | -------------------------------------------------- |
+| Laravel 12–13      | `composer require flexacms/laravel` | [references/laravel.md](references/laravel.md)     |
+| Other PHP 8.1+     | `composer require flexacms/php`     | [references/php.md](references/php.md)             |
+| Next.js App Router | `npm install @flexacms/next`        | [references/next.md](references/next.md)           |
+| React (SPA, Vite)  | `npm install @flexacms/react`       | [references/react.md](references/react.md)         |
+| Nuxt 3/4           | `npm install @flexacms/nuxt`        | [references/nuxt.md](references/nuxt.md)           |
+| Astro 5+           | `npm install @flexacms/astro`       | [references/astro.md](references/astro.md)         |
+| SvelteKit          | `npm install @flexacms/sveltekit`   | [references/sveltekit.md](references/sveltekit.md) |
+| Any JS runtime     | `npm install @flexacms/client`      | [references/client.md](references/client.md)       |
+| Typed content (TS) | `npx @flexacms/cli generate`        | [references/cli.md](references/cli.md)             |
 
 Framework packages re-export `@flexacms/client`, so installing one framework package is enough. Read only the reference for the stack in use.
 
 ## Configuration
 
-| Variable | Purpose | Default |
-| --- | --- | --- |
-| `FLEXA_URL` | Base URL of the CMS | `https://app.flexacms.com` |
-| `FLEXA_API_KEY` | API key (`flx_...`) | none, required |
+| Variable        | Purpose             | Default                    |
+| --------------- | ------------------- | -------------------------- |
+| `FLEXA_URL`     | Base URL of the CMS | `https://app.flexacms.com` |
+| `FLEXA_API_KEY` | API key (`flx_...`) | none, required             |
 
 Framework prefixes apply: Nuxt uses `NUXT_FLEXA_*`, Vite-based apps expose variables through `VITE_*` (for example `VITE_FLEXA_API_KEY`), and Astro/SvelteKit read them through `import.meta.env` or `$env/dynamic/private`. Check each reference for the exact name.
 

@@ -33,12 +33,12 @@ const posts = await getCollection('posts');
 
 Each entry is stored with its slug as id (or its numeric id when it has no slug) and the full API entry as `data`. By default only published entries are loaded.
 
-| Option           | Default                       |                                                               |
-| ---------------- | ----------------------------- | ------------------------------------------------------------- |
-| `entity`         | —                             | Entity slug                                                   |
-| `query`          | `{ status: 'published' }`     | `status`, `search`, `category`, `perPage`, `includeRelations` |
-| `id`             | slug, then id                 | `(entry) => string`                                           |
-| `url`            | `FLEXA_URL`, then `https://app.flexacms.com` |                                                    |
-| `apiKey`         | `FLEXA_API_KEY`               |                                                               |
+| Option   | Default                                      |                                                               |
+| -------- | -------------------------------------------- | ------------------------------------------------------------- |
+| `entity` | —                                            | Entity slug                                                   |
+| `query`  | `{ status: 'published' }`                    | `status`, `search`, `category`, `perPage`, `includeRelations` |
+| `id`     | slug, then id                                | `(entry) => string`                                           |
+| `url`    | `FLEXA_URL`, then `https://app.flexacms.com` |                                                               |
+| `apiKey` | `FLEXA_API_KEY`                              |                                                               |
 
 Add a `schema` to `defineCollection` to validate or reshape `data` with Zod.

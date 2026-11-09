@@ -6,11 +6,11 @@ Generates TypeScript types from the content models of a Flexa workspace.
 FLEXA_API_KEY=flx_... npx @flexacms/cli generate --out src/flexa.d.ts
 ```
 
-| Option | Default |
-| --- | --- |
+| Option  | Default                                       |
+| ------- | --------------------------------------------- |
 | `--url` | `$FLEXA_URL`, then `https://app.flexacms.com` |
-| `--key` | `$FLEXA_API_KEY` (needs the Read ability) |
-| `--out` | `flexa.d.ts` |
+| `--key` | `$FLEXA_API_KEY` (needs the Read ability)     |
+| `--out` | `flexa.d.ts`                                  |
 
 The file contains one `<Entity>Values` interface per content model and a `FlexaSchema` map. Pass `FlexaSchema` to any Flexa SDK that accepts a generic:
 
@@ -21,6 +21,7 @@ const flexa = createClient<FlexaSchema>({ url, apiKey });
 ```
 
 Type mapping:
+
 - translatable fields become `Localized<T>`
 - selects become unions of their options
 - repeaters become arrays of typed items

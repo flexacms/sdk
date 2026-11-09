@@ -20,16 +20,16 @@ const headline = localize(post?.values.headline, 'es', ['en']);
 
 ## Methods
 
-| Method | Description |
-| --- | --- |
-| `entities()` | Content models the key can read |
-| `entity(slug).schema()` | Fields, groups, categories and locales |
-| `entity(slug).list(params)` | One page. Params: `status`, `search`, `category`, `page`, `perPage`, `trashed`, `includeRelations` |
-| `entity(slug).all(params)` / `iterate(params)` | Every matching entry, page by page |
-| `entity(slug).get(idOrSlug)` | One entry; throws on 404 |
-| `entity(slug).find(idOrSlug)` | One entry; resolves to `null` on 404 |
-| `entity(slug).create(input)` / `update(id, input)` | Write entries (Write ability) |
-| `entity(slug).delete(id, { force })` / `restore(id)` | Trash, delete for good, or restore |
+| Method                                               | Description                                                                                        |
+| ---------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `entities()`                                         | Content models the key can read                                                                    |
+| `entity(slug).schema()`                              | Fields, groups, categories and locales                                                             |
+| `entity(slug).list(params)`                          | One page. Params: `status`, `search`, `category`, `page`, `perPage`, `trashed`, `includeRelations` |
+| `entity(slug).all(params)` / `iterate(params)`       | Every matching entry, page by page                                                                 |
+| `entity(slug).get(idOrSlug)`                         | One entry; throws on 404                                                                           |
+| `entity(slug).find(idOrSlug)`                        | One entry; resolves to `null` on 404                                                               |
+| `entity(slug).create(input)` / `update(id, input)`   | Write entries (Write ability)                                                                      |
+| `entity(slug).delete(id, { force })` / `restore(id)` | Trash, delete for good, or restore                                                                 |
 
 Every method accepts a last `{ signal, init }` argument. `init` is merged into the `fetch` call, which is how to pass an `AbortSignal` or extra options.
 
@@ -41,13 +41,13 @@ Reads retry after `429`, `502`, `503`, `504` and network failures, honouring `Re
 
 ## Options
 
-| Option | Default | Notes |
-| --- | --- | --- |
-| `apiPath` | `/api/v1` | Path of the content API |
-| `timeout` | `30000` | Milliseconds before a request is aborted |
-| `retries` | `2` | Retries for reads |
-| `headers` | none | Extra headers on every request |
-| `fetch` | global `fetch` | Custom implementation |
+| Option    | Default        | Notes                                    |
+| --------- | -------------- | ---------------------------------------- |
+| `apiPath` | `/api/v1`      | Path of the content API                  |
+| `timeout` | `30000`        | Milliseconds before a request is aborted |
+| `retries` | `2`            | Retries for reads                        |
+| `headers` | none           | Extra headers on every request           |
+| `fetch`   | global `fetch` | Custom implementation                    |
 
 ## Typed content
 

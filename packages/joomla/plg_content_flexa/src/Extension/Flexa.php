@@ -83,7 +83,7 @@ final class Flexa extends CMSPlugin implements SubscriberInterface
                 return $this->listHtml($entries, $attributes['image'] ?? '', $attributes['text'] ?? '');
             }
 
-            $entry = isset($attributes['slug']) ? $client->entity($entity)->find($attributes['slug']) : null;
+            $entry = isset($attributes['slug']) ? $client->entity($entity)->published()->find($attributes['slug']) : null;
         } catch (FlexaException $exception) {
             Log::add('Flexa: '.$exception->getMessage(), Log::WARNING, 'plg_content_flexa');
 

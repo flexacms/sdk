@@ -63,11 +63,18 @@ function flexa_entries(string $entity, array $args = []): Page
 }
 
 /**
- * One entry by id or slug, or null when it does not exist.
+ * One entry by id or slug, or null when it does not exist or does not have the
+ * status (default "published", so visitors never see drafts; "any" for all).
  */
-function flexa_entry(string $entity, int|string $idOrSlug): ?Entry
+function flexa_entry(string $entity, int|string $idOrSlug, string $status = 'published'): ?Entry
 {
-    return flexa()?->entity($entity)->find($idOrSlug);
+    $query = flexa()?->entity($entity);
+
+    if ($query !== null && $status !== '' && $status !== 'any') {
+        $query = $query->status($status);
+    }
+
+    return $query?->find($idOrSlug);
 }
 
 /**

@@ -134,6 +134,21 @@ describe('generateTypes', () => {
         expect(output).toContain('/** Headline — Shown *\\/ on top */');
     });
 
+    it('escapes the content model name and description in comments', () => {
+        const generated = generateTypes([
+            {
+                ...entity('posts', []),
+                name: 'Posts */ export const injected = 1; /*',
+                description: 'Line one\n*/ alert(1)',
+            },
+        ]);
+
+        expect(generated).not.toMatch(/^\s*export const injected/m);
+        expect(generated).toContain(
+            '/** Posts *\\/ export const injected = 1; /* — Line one *\\/ alert(1) */',
+        );
+    });
+
     it('builds the schema map used by createClient', () => {
         expect(output).toContain(
             "import type { Localized } from '@flexacms/client';",

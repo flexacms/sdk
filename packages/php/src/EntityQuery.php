@@ -108,12 +108,16 @@ class EntityQuery
     }
 
     /**
-     * An entry by id or slug, or null when it does not exist.
+     * An entry by id or slug, or null when it does not exist. A status filter
+     * applies too: published()->find() never returns a draft or scheduled entry.
      */
     public function find(int|string $idOrSlug): ?Entry
     {
         try {
-            return $this->get($idOrSlug);
+            $entry = $this->get($idOrSlug);
+            $status = $this->filters['status'] ?? null;
+
+            return is_string($status) && $status !== '' && $entry->status !== $status ? null : $entry;
         } catch (FlexaException $exception) {
             if ($exception->isNotFound()) {
                 return null;

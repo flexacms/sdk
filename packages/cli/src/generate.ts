@@ -25,9 +25,11 @@ export function generateTypes(schemas: EntitySchema[]): string {
     }
 
     for (const schema of schemas) {
-        lines.push(
-            `/** ${schema.name}${schema.description ? ` — ${schema.description}` : ''} */`,
-        );
+        const summary = [schema.name, schema.description]
+            .filter(Boolean)
+            .join(' — ');
+
+        lines.push(`/** ${escapeComment(summary)} */`);
         lines.push(`export interface ${names.get(schema.slug)} {`);
 
         for (const field of schema.fields.filter(

@@ -72,6 +72,14 @@ test('find() returns null for missing entries but get() throws', function () {
         ->and(fn () => $posts->get('x'))->toThrow(FlexaException::class, 'Record [x] not found.');
 });
 
+test('find() honours the status filter, so published() never returns drafts', function () {
+    $transport = new FakeTransport(array_fill(0, 2, FakeTransport::json(['data' => flexaEntry(9, ['status' => 'draft'])])));
+    $posts = flexaClient($transport, ['cache_ttl' => 0])->entity('posts');
+
+    expect($posts->published()->find('post-9'))->toBeNull()
+        ->and($posts->find('post-9')?->status)->toBe('draft');
+});
+
 test('reads are cached until the cache is flushed', function () {
     $transport = new FakeTransport(array_fill(0, 3, FakeTransport::json(['data' => flexaEntry()])));
     $client = flexaClient($transport, ['cache' => new ArrayCache]);

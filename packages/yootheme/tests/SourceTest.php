@@ -164,7 +164,7 @@ test('resolvers read entries, translated values, media and repeater items', func
 });
 
 test('the single query can take the slug from the URL, sanitized', function () {
-    fakeFlexa(['/pages/about' => ['data' => ['id' => 7, 'title' => 'About us', 'slug' => 'about']]]);
+    fakeFlexa(['/pages/about' => ['data' => ['id' => 7, 'title' => 'About us', 'slug' => 'about', 'status' => 'published']]]);
     $_GET['entry'] = '"about"/><';
 
     $entry = Resolver::entry(null, ['entity' => 'pages', 'slug' => 'home', 'from_url' => true]);
@@ -182,4 +182,25 @@ test('the list query pages through results with offset and limit', function () {
 
     expect(array_map(fn ($entry) => $entry->id, $entries))->toBe([3, 4, 5])
         ->and($GLOBALS['flexa_transport']->paths)->toBe(['/posts?category=4&page=1&per_page=100&search=x&status=published']);
+});
+
+test('the single query never returns unpublished entries', function () {
+    fakeFlexa(['/pages/roadmap' => ['data' => ['id' => 8, 'title' => 'Roadmap', 'slug' => 'roadmap', 'status' => 'draft']]]);
+
+    expect(Resolver::entry(null, ['entity' => 'pages', 'slug' => 'roadmap']))->toBeNull();
+});
+
+test('field strings are filtered before they reach the page builder', function () {
+    fakeFlexa(['/pages/about' => ['data' => [
+        'id' => 7,
+        'title' => '<img src=x onerror=alert(1)>',
+        'slug' => 'about',
+        'status' => 'published',
+        'values' => ['body' => '<p>Hi</p><script>alert(1)</script>'],
+    ]]]);
+
+    $entry = Resolver::entry(null, ['entity' => 'pages', 'slug' => 'about']);
+
+    expect(Resolver::field($entry, ['key' => 'body', 'kind' => 'value']))->not->toContain('<script>')
+        ->and(Resolver::field($entry, ['key' => 'title', 'kind' => 'attribute']))->not->toContain('<img');
 });

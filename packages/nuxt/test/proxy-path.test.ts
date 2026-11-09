@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { proxyRequestPath } from '../src/runtime/proxy-path';
+import { isEntryPath, proxyRequestPath } from '../src/runtime/proxy-path';
 
 describe('proxyRequestPath', () => {
     it('passes reads of entities, entries and schemas', () => {
@@ -26,7 +26,23 @@ describe('proxyRequestPath', () => {
                 include: 'secrets',
                 search: ['a', 'b'],
             }),
-        ).toBe('/posts');
+        ).toBe('/posts?status=published');
+    });
+
+    it('only lists published entries', () => {
+        expect(proxyRequestPath('posts', { status: 'draft' })).toBe(
+            '/posts?status=published',
+        );
+        expect(proxyRequestPath('entities', { status: 'draft' })).toBe(
+            '/entities',
+        );
+    });
+
+    it('marks single entry reads, whose status the proxy checks', () => {
+        expect(isEntryPath('/posts/hello')).toBe(true);
+        expect(isEntryPath('/posts/schema')).toBe(false);
+        expect(isEntryPath('/posts?status=published')).toBe(false);
+        expect(isEntryPath('/entities')).toBe(false);
     });
 
     it('refuses paths outside the read endpoints', () => {

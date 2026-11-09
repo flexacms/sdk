@@ -1,6 +1,6 @@
 import { isFlexaError } from '@flexacms/client';
 import { createError, defineEventHandler, getQuery } from 'h3';
-import { proxyRequestPath } from '../proxy-path';
+import { isEntryPath, proxyRequestPath } from '../proxy-path';
 import { useFlexaClient } from './client';
 
 /**
@@ -17,7 +17,15 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        return await useFlexaClient().request('GET', path);
+        const result = await useFlexaClient().request<{
+            data?: { status?: string };
+        }>('GET', path);
+
+        if (isEntryPath(path) && result?.data?.status !== 'published') {
+            throw createError({ statusCode: 404, statusMessage: 'Not Found' });
+        }
+
+        return result;
     } catch (error) {
         if (isFlexaError(error)) {
             throw createError({

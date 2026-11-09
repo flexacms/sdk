@@ -37,7 +37,7 @@ final class Resolver
         }
 
         try {
-            return $client->entity($args['entity'])->find($slug);
+            return $client->entity($args['entity'])->published()->find($slug);
         } catch (Throwable) {
             return null;
         }
@@ -122,7 +122,7 @@ final class Resolver
         }
 
         return array_values(array_map(static function (mixed $item, int $index) use ($media): array {
-            $item = is_array($item) ? $item : [];
+            $item = array_map(static fn (mixed $value): mixed => is_string($value) ? self::html($value) : $value, is_array($item) ? $item : []);
 
             foreach ((array) ($media[$index] ?? []) as $subKey => $url) {
                 if ($url !== null) {
@@ -145,14 +145,33 @@ final class Resolver
 
     /**
      * Builder fields are strings (or booleans): lists are joined, structures dropped.
+     * Strings are filtered like the platform's own content, since the page builder
+     * outputs them as HTML.
      */
     private static function scalar(mixed $value): mixed
     {
         return match (true) {
-            $value === null, is_string($value), is_bool($value) => $value,
+            $value === null, is_bool($value) => $value,
+            is_string($value) => self::html($value),
             is_int($value), is_float($value) => (string) $value,
-            is_array($value) && array_is_list($value) && array_filter($value, 'is_scalar') === $value => implode(', ', $value),
+            is_array($value) && array_is_list($value) && array_filter($value, 'is_scalar') === $value => self::html(implode(', ', $value)),
             default => null,
         };
+    }
+
+    /**
+     * Safe HTML: WordPress' post filter, Joomla's input filter, or escaped text elsewhere.
+     */
+    private static function html(string $value): string
+    {
+        if (function_exists('wp_kses_post')) {
+            return wp_kses_post($value);
+        }
+
+        if (class_exists(\Joomla\CMS\Filter\InputFilter::class)) {
+            return \Joomla\CMS\Filter\InputFilter::getInstance([], [], \Joomla\CMS\Filter\InputFilter::ONLY_BLOCK_DEFINED_TAGS, \Joomla\CMS\Filter\InputFilter::ONLY_BLOCK_DEFINED_ATTRIBUTES)->clean($value, 'html');
+        }
+
+        return htmlspecialchars($value, ENT_QUOTES | ENT_HTML5, 'UTF-8');
     }
 }

@@ -35,7 +35,7 @@ class HtmlView extends BaseHtmlView
         }
 
         try {
-            $entry = $client->entity($entity)->find($slug);
+            $entry = $client->entity($entity)->published()->find($slug);
         } catch (FlexaException $exception) {
             Log::add('Flexa: '.$exception->getMessage(), Log::WARNING, 'com_flexa');
 

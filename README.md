@@ -21,7 +21,7 @@ Every JavaScript framework package re-exports `@flexacms/client`, so one install
 
 ## Agent skill
 
-`skills/flexa-sdk` teaches coding agents (Claude Code and others) which SDK to use for your stack, how to configure it and the mistakes to avoid. Install it into your project:
+`skills/flexa-sdk` teaches coding agents (Claude Code and others) how Flexa works: how to design content models (entities, field groups, categories with scoped fields) and propose a structure, how to manage content through the MCP server and the REST API, which SDK to use for your stack and the mistakes to avoid. Install it into your project:
 
 ```bash
 npx skills add flexacms/sdk --skill flexa-sdk              # project scope

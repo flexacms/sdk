@@ -1,6 +1,6 @@
 {
     "name": "@flexacms/next",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "description": "Next.js integration for the Flexa headless CMS: cached server-side fetching with tag revalidation.",
     "keywords": [
         "cms",
@@ -49,7 +49,7 @@
         "typecheck": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@flexacms/client": "^0.3.1"
+        "@flexacms/client": "^0.3.2"
     },
     "devDependencies": {
         "next": "^16.4.0",

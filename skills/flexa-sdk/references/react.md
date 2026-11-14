@@ -45,6 +45,7 @@ function Posts() {
 - `useEntries(entity, params)` returns the list response: `data.data` holds the entries.
 - `useEntry(entity, idOrSlug)` returns one entry, or `null` when it does not exist. It waits while the identifier is `null` or `undefined`.
 - Stale responses are cancelled when the arguments change.
+- `useFlexa()` returns the provider's client, for calls the hooks do not cover (`schema()`, writes). It throws outside `<FlexaProvider>`.
 
 ## Typed hooks
 

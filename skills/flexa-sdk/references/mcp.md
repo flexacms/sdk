@@ -28,6 +28,7 @@ The server lists only the tools the key allows. A missing tool means a missing a
 ## Behaviors to know
 
 - **`create_record` defaults to `status: "published"`.** Pass `status: "draft"` unless the user asked to publish. Use `scheduled` + `publish_at` (ISO 8601) for scheduled publishing.
+- **The MCP tools cannot set an entry's `order`.** Manual ordering is done by dragging in the panel or with the REST API (`order` in the payload). When the frontend needs an order editors control over MCP, add a `number` field (`position`) and sort by it.
 - **`update_record` with `category_ids` replaces the entry's categories** (it does not add). Send the full list. Omit it to keep them.
 - **Field values are partial:** `update_record` / `set_record_values` change only the keys sent. A `repeater` or `multiple` value is replaced as a whole: send every row.
 - **Unknown keys are dropped without error.** Verify with `get_record` after writing.

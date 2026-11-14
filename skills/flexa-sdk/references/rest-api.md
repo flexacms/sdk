@@ -30,10 +30,10 @@ The REST API cannot change content models (no Schema endpoints) and cannot uploa
 | `filter[key]=value` / `filter[key][op]=value` | lists      | Ops: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in` (comma separated), `contains`, `null` (`true`/`false`). See field-types.md for what each type supports. Unknown fields or unsupported ops → `422`. |
 | `sort`                                        | lists      | Field keys or `id`, `title`, `slug`, `order`, `status`, `publish_at`, `created_at`, `updated_at`; `-` prefix for descending: `sort=-price,title`.                                                  |
 | `per_page`, `page`                            | lists      | Pagination (max 100 per page). Lists include `links` and `meta`.                                                                                                                                   |
-| `trashed`                                     | lists      | `with` or `only` for soft-deleted entries.                                                                                                                                                         |
+| `trashed`                                     | lists      | `with` or `only` for soft-deleted entries. Needs the **Write** ability (restore permission); a Read key gets `403`.                                                                                |
 | `locale`                                      | lists, one | Resolve top-level translatable fields to one locale, with fallback.                                                                                                                                |
 | `fields`                                      | lists, one | Only these keys in `values` and `media`: `fields=hero_title,hero_image`.                                                                                                                           |
-| `include`                                     | lists, one | `relations` expands relationship fields (`id`, `title`, `slug`, `status`); `relations.values` also includes their `values` and `media`.                                                            |
+| `include`                                     | lists, one | `relations` adds a top-level `relations` object (see Entry response); `relations.values` also includes the related entries' `values` and `media`.                                                  |
 
 ```bash
 curl "$FLEXA_URL/api/v1/products?status=published&filter[price][gte]=10&sort=-price&include=relations" \
@@ -79,12 +79,30 @@ curl "$FLEXA_URL/api/v1/products?status=published&filter[price][gte]=10&sort=-pr
         "slug": "pricing",
         "status": "published",
         "publish_at": null,
+        "order": 3,
         "categories": [{ "id": 4, "name": "Landing", "slug": "landing" }],
         "values": {
-            "hero_image": "flex-fields/acme/pages/hero_image/pricing.jpg"
+            "hero_image": "flex-fields/acme/pages/hero_image/pricing.jpg",
+            "featured_products": [12, 15]
         },
         "media": {
             "hero_image": "https://cdn.example.com/flex-fields/acme/pages/hero_image/pricing.jpg"
+        },
+        "relations": {
+            "featured_products": [
+                {
+                    "id": 12,
+                    "title": "Starter",
+                    "slug": "starter",
+                    "status": "published"
+                },
+                {
+                    "id": 15,
+                    "title": "Pro",
+                    "slug": "pro",
+                    "status": "published"
+                }
+            ]
         },
         "created_at": "...",
         "updated_at": "...",
@@ -95,9 +113,15 @@ curl "$FLEXA_URL/api/v1/products?status=published&filter[price][gte]=10&sort=-pr
 
 Render files from `media` (absolute URLs). Send paths from `values` when writing.
 
+`relations` is only present with `include=relations` (or `relations.values`). It is keyed by relationship field and is **always an array**, even for a single relationship. `values` keeps the IDs either way. A relationship to an entity the key cannot read is left out of `relations`. Check each related entry's `status` before rendering it on a public page.
+
+## Preview of unpublished entries
+
+The panel's **Preview** button opens the website with a signed token in the URL. The website's preview URL is set in _Workspace settings → Entry preview_ as a pattern with `{token}` (required), `{entity}`, `{slug}` and `{id}`, for example `https://site.com/preview/{entity}/{slug}?token={token}`. The website exchanges the token at `GET /api/v1/_preview/{token}`, which returns the entry whatever its status, including trashed entries. Tokens expire (60 minutes by default); an expired or invalid token gives `404`. Do not build previews on a plain `?preview=1&id=5` parameter. If the Preview button does not appear, no preview URL is configured for the workspace. The SDKs have no preview helper; call the endpoint with the client's `fetch` or the REST API.
+
 ## Webhooks
 
-Configured in the panel (_Developers → Webhooks_). Events: `entry.created`, `entry.updated`, `entry.published`, `entry.unpublished`, `entry.deleted`, `entry.restored`, `schema.updated`, `ping`.
+Configured in the panel (_Developers → Webhooks_), each with its events and optionally limited to some entities. Events: `entry.created`, `entry.updated`, `entry.published`, `entry.unpublished`, `entry.deleted`, `entry.restored`, `schema.updated`, `ping`.
 
 Each delivery is a `POST` with JSON:
 

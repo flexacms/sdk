@@ -1,6 +1,6 @@
 ---
 name: flexa-sdk
-description: Use for any work with the Flexa headless CMS — designing or changing content models (entities, fields, field groups, categories), proposing a data structure for a website or app, managing content through the Flexa MCP server or the REST API at /api/v1, and reading or writing content with an official SDK (@flexacms/client, @flexacms/react, @flexacms/next, @flexacms/nuxt, @flexacms/astro, @flexacms/sveltekit, @flexacms/cli, flexacms/php, flexacms/laravel). Triggers on Flexa, flexacms, FLEXA_API_KEY, FLEXA_URL, flx_ keys, Flexa MCP tools (list_entities, get_entity_schema, create_field...), "content model", "headless CMS" content fetching, or code importing from any @flexacms/* package or the FlexaCms\ namespaces.
+description: Use for any work with the Flexa headless CMS — designing or changing content models (entities, fields, field groups, categories), proposing a data structure for a website or app, managing content through the Flexa MCP server or the REST API at /api/v1, and reading or writing content with an official SDK (@flexacms/client, @flexacms/react, @flexacms/next, @flexacms/nuxt, @flexacms/astro, @flexacms/sveltekit, @flexacms/cli, flexacms/php, flexacms/laravel) or the WordPress, Joomla and YOOtheme Pro plugins. Triggers on Flexa, flexacms, FLEXA_API_KEY, FLEXA_URL, flx_ keys, Flexa MCP tools (list_entities, get_entity_schema, create_field...), "content model", "headless CMS" content fetching, or code importing from any @flexacms/* package or the FlexaCms\ namespaces.
 ---
 
 # Flexa
@@ -31,17 +31,18 @@ Read only the references the task needs. For any modeling work, read `content-mo
 
 ## Pick the SDK
 
-| Stack              | Install                             | Reference                                          |
-| ------------------ | ----------------------------------- | -------------------------------------------------- |
-| Laravel 12–13      | `composer require flexacms/laravel` | [references/laravel.md](references/laravel.md)     |
-| Other PHP 8.1+     | `composer require flexacms/php`     | [references/php.md](references/php.md)             |
-| Next.js App Router | `npm install @flexacms/next`        | [references/next.md](references/next.md)           |
-| React (SPA, Vite)  | `npm install @flexacms/react`       | [references/react.md](references/react.md)         |
-| Nuxt 3/4           | `npm install @flexacms/nuxt`        | [references/nuxt.md](references/nuxt.md)           |
-| Astro 5+           | `npm install @flexacms/astro`       | [references/astro.md](references/astro.md)         |
-| SvelteKit          | `npm install @flexacms/sveltekit`   | [references/sveltekit.md](references/sveltekit.md) |
-| Any JS runtime     | `npm install @flexacms/client`      | [references/client.md](references/client.md)       |
-| Typed content (TS) | `npx @flexacms/cli generate`        | [references/cli.md](references/cli.md)             |
+| Stack                           | Install                             | Reference                                              |
+| ------------------------------- | ----------------------------------- | ------------------------------------------------------ |
+| Laravel 12–13                   | `composer require flexacms/laravel` | [references/laravel.md](references/laravel.md)         |
+| Other PHP 8.1+                  | `composer require flexacms/php`     | [references/php.md](references/php.md)                 |
+| Next.js App Router              | `npm install @flexacms/next`        | [references/next.md](references/next.md)               |
+| React (SPA, Vite)               | `npm install @flexacms/react`       | [references/react.md](references/react.md)             |
+| Nuxt 3/4                        | `npm install @flexacms/nuxt`        | [references/nuxt.md](references/nuxt.md)               |
+| Astro 5+                        | `npm install @flexacms/astro`       | [references/astro.md](references/astro.md)             |
+| SvelteKit                       | `npm install @flexacms/sveltekit`   | [references/sveltekit.md](references/sveltekit.md)     |
+| Any JS runtime                  | `npm install @flexacms/client`      | [references/client.md](references/client.md)           |
+| Typed content (TS)              | `npx @flexacms/cli generate`        | [references/cli.md](references/cli.md)                 |
+| WordPress, Joomla, YOOtheme Pro | Plugin ZIPs from the SDK releases   | [references/cms-plugins.md](references/cms-plugins.md) |
 
 Framework packages re-export `@flexacms/client`, so installing one framework package is enough.
 
@@ -63,6 +64,19 @@ Framework prefixes apply: Nuxt uses `NUXT_FLEXA_*`, Vite-based apps expose varia
 | **MCP**    | Connect to the MCP server at `/mcp`                                                 |
 
 A key can also be restricted to some entities and can expire. If a tool or endpoint you expect is missing, the key lacks the ability: tell the user which one to add instead of working around it.
+
+## The panel and the workspace
+
+Some things only exist in the Flexa panel, not in the API or MCP. Point the user there instead of trying to do them:
+
+- **Media Library**: upload, rename and delete files; images and files are only uploaded here or in the entry form.
+- **Import / export**: CSV export of an entity's entries and an import screen (when the member's role allows it).
+- **AI assistant**: a chat in the panel that manages content with the same tools as MCP.
+- **Developers**: API keys (abilities, allowed entities, expiry) and webhooks (events, entities, deliveries).
+- **Members and roles**: `owner` and `admin` (members, keys, settings and content models), `editor` (entries only), `viewer` (read only).
+- **Workspace settings**: content languages (`locales`, the first is the default), the website preview URL (see rest-api.md, Preview) and the AI assistant's instructions.
+
+The account plan sets limits (workspaces, members, API keys, webhooks, storage) and whether **MCP** and the **AI assistant** are available. When a key with the MCP ability still cannot connect, or a key or webhook cannot be created, the plan is the likely cause: tell the user instead of retrying.
 
 ## Rules that prevent bugs
 

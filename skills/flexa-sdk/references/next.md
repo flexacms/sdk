@@ -40,7 +40,7 @@ export default async function Post({
 
 ## Caching
 
-Reads are tagged `flexa`, `flexa:<entity>` and `flexa:<entity>:<id or slug>`. Writes are never cached. `revalidate` sets how long cached responses live: default 60 seconds, `false` keeps them until revalidated.
+Reads are tagged `flexa`, `flexa:<entity>` and `flexa:<entity>:<id or slug>` (`FLEXA_TAG` is the base tag; `flexaTags('posts/hello')` returns the tags of an API path, for your own `fetch` calls). Writes are never cached. `revalidate` sets how long cached responses live: default 60 seconds, `false` keeps them until revalidated.
 
 ## Revalidation
 
